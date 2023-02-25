@@ -10,10 +10,10 @@ import java.util.List;
 @Table(name = "users")
 
 //lombok dependency -> make getter, setter, constructor using annotations
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User {
     //parameters
     @Id

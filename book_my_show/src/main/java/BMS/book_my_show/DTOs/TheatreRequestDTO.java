@@ -10,9 +10,13 @@ import lombok.NonNull;
 @AllArgsConstructor
 public class TheatreRequestDTO {
     private String name;
-
-    @NonNull
     private String city;
-
     private String address;
+
+    //theatre seats... no of classic and premium seats
+    private int classicSeatCount;
+    private int premiumSeatCount;
+
+    //no need to have price attribute as that would be in show DTO,
+    //while creating theatre, design matters
 }

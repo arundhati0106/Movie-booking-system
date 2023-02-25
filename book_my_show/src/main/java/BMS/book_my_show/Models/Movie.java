@@ -5,10 +5,7 @@ import BMS.book_my_show.Enums.Genre;
 import BMS.book_my_show.Enums.MovieLanguage;
 import jakarta.persistence.*;
 import jdk.jfr.Timestamp;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.security.cert.Certificate;
 import java.time.LocalDate;
@@ -17,10 +14,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "movies")
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Movie {
     //attributes
     @Id
