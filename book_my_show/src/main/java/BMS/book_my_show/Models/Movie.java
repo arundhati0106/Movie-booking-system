@@ -3,9 +3,14 @@ package BMS.book_my_show.Models;
 import BMS.book_my_show.Enums.CertificateType;
 import BMS.book_my_show.Enums.Genre;
 import BMS.book_my_show.Enums.MovieLanguage;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import jdk.jfr.Timestamp;
 import lombok.*;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.security.cert.Certificate;
 import java.time.LocalDate;

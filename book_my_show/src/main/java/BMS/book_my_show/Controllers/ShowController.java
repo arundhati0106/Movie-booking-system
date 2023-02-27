@@ -1,28 +1,25 @@
 package BMS.book_my_show.Controllers;
 
-import BMS.book_my_show.DTOs.TheatreRequestDTO;
-import BMS.book_my_show.Service.TheatreService;
+import BMS.book_my_show.DTOs.ShowRequestDTO;
+import BMS.book_my_show.Service.ShowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("theatre")
-public class TheatreController {
+@RequestMapping("show")
+public class ShowController {
     @Autowired
-    TheatreService theatreService;
+    ShowService showService;
 
-    @PostMapping("add")
-    public ResponseEntity<String> addTheatre(@RequestBody TheatreRequestDTO theatreRequestDTO) {
+    public ResponseEntity<String> addShow(ShowRequestDTO showRequestDTO) {
         try {
-            String result = theatreService.addTheatre(theatreRequestDTO);
+            String result = showService.addShow(showRequestDTO);
             return new ResponseEntity(result, HttpStatus.CREATED);
         }
-        catch (Exception e) {
+        catch(Exception e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }

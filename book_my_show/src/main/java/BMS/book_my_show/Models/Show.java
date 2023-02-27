@@ -2,10 +2,8 @@ package BMS.book_my_show.Models;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,11 +14,10 @@ import java.util.List;
 @Entity
 @Table(name = "shows")
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Builder
 public class Show {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

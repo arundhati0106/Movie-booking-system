@@ -21,7 +21,15 @@ public class TheatreService {
     @Autowired
     TheatreSeatRepository theatreSeatRepository;
 
-    public String addTheatre(TheatreRequestDTO theatreRequestDTO) {
+    public String addTheatre(TheatreRequestDTO theatreRequestDTO) throws Exception {
+
+        //validations
+        if(theatreRequestDTO.getName() == null || theatreRequestDTO.getCity() == null) {
+            throw new Exception("Name and location should be valid");
+        }
+
+        //already exists
+
         /*
         create theatre seats
         create theatre entity
@@ -29,20 +37,19 @@ public class TheatreService {
         save theatre in repo
         */
 
+        //theatre entity
         Theatre theatre = TheatreConverter.convertDTOtoEntity(theatreRequestDTO);
 
-        List<TheatreSeats> theatreSeatsList = new ArrayList<>();
+        //theatre seat entity
+        List<TheatreSeats> theatreSeatsList = addTheatreSeat(theatreRequestDTO, theatre);
 
-
-//        theatreSeatsList.add(addTheatreSeat("A_01", 300, SeatType.CLASSIC));
-//        theatreSeatsList.add(addTheatreSeat("B_01", 500, SeatType.PREMIUM));
-//
-//        for(TheatreSeats seats: theatreSeatsList) {
-//            seats.setTheatre(theatre);
-//        }
-
+        //set attributes
+        //set seats to theatre
         theatre.setSeats(theatreSeatsList);
+
+        //save
         theatreRepository.save(theatre);
+
         return "theatre and seats added";
     }
 
@@ -77,11 +84,6 @@ public class TheatreService {
             theatreSeatsList.add(theatreSeats);
         }
 
-        theatreSeatRepository.saveAll(theatreSeatsList);
         return theatreSeatsList;
     }
-
-//    public TheatreSeats addTheatreSeat(String seat_no, int rate, SeatType seatType) {
-//        return TheatreSeats.builder().seatNumber(seat_no).price(rate).seatType(seatType).build();
-//    }
 }
